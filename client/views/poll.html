@@ -1,0 +1,81 @@
+<template name="pollListItem">
+	<div class="poll-list-item">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+				<div class="row">
+					Poll expiration: {{getExpiration}}
+					<br />
+					Total votes: {{getVotes}}
+				</div>
+				<div class="poll-list-item-title">
+                    {{title}}
+				</div>
+            </div>
+            <div class="col-sm-12 text-center">
+				<button class="btn btn-default" data-action="view-poll">View Poll</button>
+            </div>
+        </div>
+	</div>
+</template>
+
+<template name="pollDetails">
+    <div class="container">
+        <div class="row">
+            <div id="pollDetails" class="col-sm-6 col-sm-offset-3">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="poll-details-title">
+                            {{title}}
+                        </div>
+                    </div>
+                    <div class="col-sm-4 text-right">
+                        <div class="poll-details-creation-date">
+                            <i class="fa fa-calendar"></i> {{getTimeAgoFormat timestamp}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="poll-details-description">
+                            {{description}}
+                        </div>
+                    </div>
+                </div>
+				<div class="row poll-details-results">
+					<div class="col-sm-12">
+						{{#if reactiveVarEquals 'hasExpired' true}}
+							The poll has ended!
+							{{else}}
+							Here are the results so far:
+						{{/if}}
+						{{#if reactiveVarEquals 'hasVoted' true}}
+							<div class="text-center">
+	                            {{#each options}}
+								<div class="poll-details-result-option">
+									<span class="poll-details-result-option-text">{{this}}: </span>
+									<span class="poll-details-result-option-vote-count">{{voteCountForOption}}</span>
+	                            </div>
+	                            {{/each}}
+							</div>
+
+						{{else}}
+							Cast your vote to see the results!
+						{{/if}}
+					</div>
+				</div>
+				{{#if reactiveVarEquals 'hasVoted' false}}
+                <div class="row poll-details-ballet">
+					<div class="col-sm-12">
+                        Cast Your Vote:
+						<div class="poll-details-options text-center">
+                            {{#each options}}
+                                <button class="btn btn-default" data-action="vote-on-poll">{{this}}</button>
+                            {{/each}}
+						</div>
+					</div>
+                </div>
+				{{/if}}
+            </div>
+		</div>
+    </div>
+</template>

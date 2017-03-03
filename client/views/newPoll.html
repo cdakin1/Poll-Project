@@ -1,0 +1,45 @@
+<template name="newPoll">
+<div class="text-center">
+    {{#if reactiveVarEquals 'creatingPoll' false}}
+		<button class="btn btn-default" data-action="open-new-poll-input">Create New Poll</button>
+    {{/if}}
+    {{#momentum plugin='slide-height-fade'}}
+        {{#if reactiveVarEquals 'creatingPoll' true}}
+            <div class="new-poll-dialogue">
+				<h4>Create New Poll</h4>
+				<div class="row">
+					<input id="newPollTitle" type="text" placeholder="Poll Title"/>
+				</div>
+				<div class="row">
+					<textarea id="newPollDescription" placeholder="Description of what we're voting on"></textarea>
+				</div>
+        <div class="row">
+          <h4>Poll Choices</h4>
+            {{#each options}}
+            <div class="row">
+              <button class="delete">&times;</button>{{this}}
+            </div>
+            {{/each}}
+        </div>
+        <br />
+        <div class="row">
+          <form class="new-option">
+            <div class="row"><input type="text" name="text" placeholder="Add new poll choice"></div>
+          </form>
+          <h5>Type in a choice and press enter to add</h5>
+        </div>
+        <br />
+        <div class="row">
+            {{duration}} Hours until poll closes <input type="number" name="name" id="poll-duration" />
+            <button class="btn btn-default" type="submit" data-action="update-poll-duration">Update Duration</button>
+        </div>
+        <br />
+				<div class="row">
+					<button class="btn btn-default" data-action="cancel-new-poll">Cancel</button>
+					<button class="btn btn-success" data-action="create-new-poll">Create Poll</button>
+				</div>
+            </div>
+        {{/if}}
+    {{/momentum}}
+</div>
+</template>

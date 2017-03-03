@@ -1,0 +1,22 @@
+{
+  "name": "poll-booth",
+  "version": "0.1.0",
+  "engines": {
+    "node": "4.6.2",
+    "npm": "3.10.9"
+  },
+  "scripts": {
+    "pretest": "jshint ."
+  },
+  "dependencies": {
+    "babel-runtime": "^6.20.0",
+    "bcrypt": "^0.8.7",
+    "fiber": "^1.0.4",
+    "fibers": "^1.0.15"
+  },
+  "devDependencies": {
+    "eslint": "^3.16.1",
+    "eslint-config-airbnb-base": "^11.1.0",
+    "eslint-plugin-import": "^2.2.0"
+  }
+}

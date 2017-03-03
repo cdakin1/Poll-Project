@@ -1,0 +1,9 @@
+.meteor/
+doc/
+manifests/
+modules/
+node_modules/
+public/
+**/external/
+tests/
+packages/

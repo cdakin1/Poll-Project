@@ -1,0 +1,25 @@
+<template name="defaultLayout">
+	<div class="nav-header container-fluid">
+		<div class="row">
+            <div class="col-xs-6">
+				<a href="/">
+					<img class="logo" src="/img/logo.png">
+					<div class="header-title">
+						Poll Booth
+                    <span class="sub-title">
+                        cast your vote
+                    </span>
+					</div>
+                </a>
+            </div>
+            <div class="col-xs-5">
+				<div class="pull-right">
+                    {{> loginButtons align="right"}}
+				</div>
+            </div>
+		</div>
+	</div>
+	<div id="content">
+        {{> yield}}
+	</div>
+</template>
